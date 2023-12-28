@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px;
+            height: 80vh;
+        }
+        .center-content{
+            text-align: center;
+        }
+        .btn{
+            font-size: 14px;
+            border-color: black;
+            border-style: solid;
+            background-color: white;
+            border-width: 2px;
+        }
+        .btn:active{
+            background-color: black;
+            color: white;
+        }
+        .input{
+            font-size: 14px;
+            border-color: black;
+            height: 20px;
+            border-style: solid;
+
+        }
+    </style>
+    <script>
+        function isPrime() {
+            // Get the input value
+            var number = document.getElementById("numberInput").value;
+
+            // Convert input value to an integer
+            number = parseInt(number);
+
+            // Check if the number is a positive integer
+            if (isNaN(number) || number <= 1) {
+                document.getElementById("result").innerHTML = "Please enter a valid positive integer greater than 1.";
+                return;
+            }
+
+            // Check if the number is prime
+            var isPrime = true;
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            // Display the result
+            if (isPrime) {
+                document.getElementById("result").innerHTML = number + " is a prime number.";
+            } else {
+                document.getElementById("result").innerHTML = number + " is not a prime number.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="center-content">
+        <h2>Prime Number Checker</h2>
+
+        <label for="numberInput">Enter a number:</label>
+        <input type="text" class="input" id="numberInput" placeholder="Enter a number">
+
+        <button onclick="isPrime()" class="btn">Check Prime</button>
+        
+        <p id="result"></p>
+    </div>
+    
+</body>
+</html>
